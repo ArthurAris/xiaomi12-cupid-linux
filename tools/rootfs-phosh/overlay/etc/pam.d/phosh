@@ -1,0 +1,4 @@
+# Phosh lockscreen authentication, using the distribution's PAM policies.
+# unix_chkpwd keeps the archive-provided root:shadow 2755 mode.
+@include common-auth
+@include common-account

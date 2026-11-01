@@ -1,0 +1,8 @@
+[Unit]
+Description=One-shot NTP sync for the Xiaomi 12 port
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/cupid-timesync

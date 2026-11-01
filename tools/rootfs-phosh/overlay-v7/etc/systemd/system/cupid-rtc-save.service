@@ -1,0 +1,9 @@
+[Unit]
+Description=Save system clock to the PMK8350 RTC
+ConditionPathExists=/dev/rtc0
+After=time-sync.target
+Wants=time-sync.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/cupid-rtc-save

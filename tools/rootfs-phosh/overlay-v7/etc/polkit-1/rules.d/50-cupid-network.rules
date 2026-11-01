@@ -1,0 +1,8 @@
+// Allow the active local user to manage NetworkManager connections
+// (Wi-Fi scan/connect, USB networking) without a polkit password prompt.
+polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.NetworkManager.") === 0 &&
+        subject.local && subject.active) {
+        return polkit.Result.YES;
+    }
+});

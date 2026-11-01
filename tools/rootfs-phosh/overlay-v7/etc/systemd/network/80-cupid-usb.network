@@ -1,0 +1,13 @@
+[Match]
+Name=usb0
+
+[Network]
+Address=192.168.137.2/24
+Address=172.16.42.2/24
+# The debug link must not install a default route: WiFi carries internet.
+DNS=192.168.1.1
+DNS=223.5.5.5
+IPv6AcceptRA=no
+
+[DHCPv4]
+UseDHCP=false

@@ -1,0 +1,186 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Cupid EPSS frequency additions, 2026-10-31; candidate, not yet boot-tested.
+ * Include AFTER sm8450.dtsi in the Cupid board only.
+ *
+ * Frequencies: v51-cpufreq-domains-20261031-225511.txt, hardware LUT decoded
+ * by qcom-cpufreq-hw (failed exact OPP matches). This is NOT a complete LUT
+ * dump. Existing matched frequencies remain inherited from sm8450.dtsi.
+ *
+ * Bandwidth: each new frequency takes the three opp-peak-kBps values of
+ * the LOWEST original OPP frequency >= it IN THE SAME CLUSTER. These are
+ * conservative reference votes, NOT measured device bandwidth requirements.
+ * Order: CPU->LLCC, LLCC->DDR, EPSS L3. Never round down or extrapolate.
+ *
+ * Keep all existing OPPs and CPU interconnects. The driver disables OPPs
+ * absent from the hardware LUT. Do not add opp-microvolt: EPSS LUT supplies
+ * voltages. Do not remove operating-points-v2 (that disables ICC scaling).
+ * No CPU_IDLE, panel, DSC, GPU, regulator or clock changes belong here.
+ */
+
+&cpu0_opp_table {
+	/* Reference ceiling: 441600000 Hz. */
+	opp-307200000 {
+		opp-hz = /bits/ 64 <307200000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (403200 * 32)>;
+	};
+	opp-403200000 {
+		opp-hz = /bits/ 64 <403200000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (403200 * 32)>;
+	};
+	/* Reference ceiling: 556800000 Hz. */
+	opp-518400000 {
+		opp-hz = /bits/ 64 <518400000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (518400 * 32)>;
+	};
+	/* Reference ceiling: 691200000 Hz. */
+	opp-614400000 {
+		opp-hz = /bits/ 64 <614400000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (710400 * 32)>;
+	};
+	/* Reference ceiling: 806400000 Hz. */
+	opp-729600000 {
+		opp-hz = /bits/ 64 <729600000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (806400 * 32)>;
+	};
+	/* Reference ceiling: 940800000 Hz. */
+	opp-844800000 {
+		opp-hz = /bits/ 64 <844800000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (902400 * 32)>;
+	};
+	/* Reference ceiling: 1056000000 Hz. */
+	opp-960000000 {
+		opp-hz = /bits/ 64 <960000000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (998400 * 32)>;
+	};
+	/* Reference ceiling: 1132800000 Hz. */
+	opp-1075200000 {
+		opp-hz = /bits/ 64 <1075200000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (1075200 * 32)>;
+	};
+	/* Reference ceiling: 1228800000 Hz. */
+	opp-1171200000 {
+		opp-hz = /bits/ 64 <1171200000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (1075200 * 32)>;
+	};
+	/* Reference ceiling: 1324800000 Hz. */
+	opp-1267200000 {
+		opp-hz = /bits/ 64 <1267200000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (1267200 * 32)>;
+	};
+	/* Reference ceiling: 1440000000 Hz. */
+	opp-1363200000 {
+		opp-hz = /bits/ 64 <1363200000>;
+		opp-peak-kBps = <(466000 * 16) (768000 * 4) (1478400 * 32)>;
+	};
+	/* Reference ceiling: 1555200000 Hz. */
+	opp-1478400000 {
+		opp-hz = /bits/ 64 <1478400000>;
+		opp-peak-kBps = <(466000 * 16) (768000 * 4) (1478400 * 32)>;
+	};
+	/* Reference ceiling: 1670400000 Hz. */
+	opp-1574400000 {
+		opp-hz = /bits/ 64 <1574400000>;
+		opp-peak-kBps = <(466000 * 16) (1555000 * 4) (1593600 * 32)>;
+	};
+	/* Reference ceiling: 1804800000 Hz. */
+	opp-1689600000 {
+		opp-hz = /bits/ 64 <1689600000>;
+		opp-peak-kBps = <(600000 * 16) (1555000 * 4) (1708800 * 32)>;
+	};
+	opp-1785600000 {
+		opp-hz = /bits/ 64 <1785600000>;
+		opp-peak-kBps = <(600000 * 16) (1555000 * 4) (1708800 * 32)>;
+	};
+};
+
+&cpu4_opp_table {
+	/* Reference ceiling: 2496000000 Hz. */
+	opp-2419200000 {
+		opp-hz = /bits/ 64 <2419200000>;
+		opp-peak-kBps = <(1066000 * 16) (3196000 * 4) (1708800 * 32)>;
+	};
+};
+
+&cpu7_opp_table {
+	/* Reference ceiling: 921600000 Hz. */
+	opp-806400000 {
+		opp-hz = /bits/ 64 <806400000>;
+		opp-peak-kBps = <(300000 * 16) (547000 * 4) (614400 * 32)>;
+	};
+	/* Reference ceiling: 1036800000 Hz. */
+	opp-940800000 {
+		opp-hz = /bits/ 64 <940800000>;
+		opp-peak-kBps = <(300000 * 16) (768000 * 4) (614400 * 32)>;
+	};
+	/* Reference ceiling: 1171200000 Hz. */
+	opp-1056000000 {
+		opp-hz = /bits/ 64 <1056000000>;
+		opp-peak-kBps = <(466000 * 16) (768000 * 4) (902400 * 32)>;
+	};
+	/* Reference ceiling: 1536000000 Hz. */
+	opp-1497600000 {
+		opp-hz = /bits/ 64 <1497600000>;
+		opp-peak-kBps = <(600000 * 16) (1555000 * 4) (998400 * 32)>;
+	};
+	/* Reference ceiling: 1651200000 Hz. */
+	opp-1612800000 {
+		opp-hz = /bits/ 64 <1612800000>;
+		opp-peak-kBps = <(600000 * 16) (1555000 * 4) (1267200 * 32)>;
+	};
+	/* Reference ceiling: 1766400000 Hz. */
+	opp-1728000000 {
+		opp-hz = /bits/ 64 <1728000000>;
+		opp-peak-kBps = <(600000 * 16) (1555000 * 4) (1267200 * 32)>;
+	};
+	/* Reference ceiling: 1881600000 Hz. */
+	opp-1843200000 {
+		opp-hz = /bits/ 64 <1843200000>;
+		opp-peak-kBps = <(806000 * 16) (2092000 * 4) (1267200 * 32)>;
+	};
+	/* Reference ceiling: 1996800000 Hz. */
+	opp-1958400000 {
+		opp-hz = /bits/ 64 <1958400000>;
+		opp-peak-kBps = <(806000 * 16) (2092000 * 4) (1478400 * 32)>;
+	};
+	/* Reference ceiling: 2131200000 Hz. */
+	opp-2054400000 {
+		opp-hz = /bits/ 64 <2054400000>;
+		opp-peak-kBps = <(806000 * 16) (2736000 * 4) (1593600 * 32)>;
+	};
+	/* Reference ceiling: 2246400000 Hz. */
+	opp-2169600000 {
+		opp-hz = /bits/ 64 <2169600000>;
+		opp-peak-kBps = <(933000 * 16) (2736000 * 4) (1593600 * 32)>;
+	};
+	/* Reference ceiling: 2361600000 Hz. */
+	opp-2284800000 {
+		opp-hz = /bits/ 64 <2284800000>;
+		opp-peak-kBps = <(933000 * 16) (2736000 * 4) (1593600 * 32)>;
+	};
+	/* Reference ceiling: 2476800000 Hz. */
+	opp-2400000000 {
+		opp-hz = /bits/ 64 <2400000000>;
+		opp-peak-kBps = <(1066000 * 16) (3196000 * 4) (1708800 * 32)>;
+	};
+	/* Reference ceiling: 2592000000 Hz. */
+	opp-2515200000 {
+		opp-hz = /bits/ 64 <2515200000>;
+		opp-peak-kBps = <(1066000 * 16) (3196000 * 4) (1708800 * 32)>;
+	};
+	/* Reference ceiling: 2707200000 Hz. */
+	opp-2630400000 {
+		opp-hz = /bits/ 64 <2630400000>;
+		opp-peak-kBps = <(1066000 * 16) (3196000 * 4) (1708800 * 32)>;
+	};
+	/* Reference ceiling: 2822400000 Hz. */
+	opp-2726400000 {
+		opp-hz = /bits/ 64 <2726400000>;
+		opp-peak-kBps = <(1066000 * 16) (3196000 * 4) (1708800 * 32)>;
+	};
+	/* Reference ceiling: 2918400000 Hz. */
+	opp-2841600000 {
+		opp-hz = /bits/ 64 <2841600000>;
+		opp-peak-kBps = <(1066000 * 16) (3196000 * 4) (1708800 * 32)>;
+	};
+};

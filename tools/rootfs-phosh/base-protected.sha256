@@ -1,0 +1,4 @@
+a6b093c9916c6c54e5d634d3689f1a0132e14cce0b8e50ff445da8e85acfbd17  etc/fstab
+f69cd13756158f452d16b58f4673d7a90d49d4e47ba5c0b75b76e57d5a183139  etc/apt/sources.list
+f4c0314f1afbcb088616f0d21318a9cef1df8d59952192addc3119cc7fa5a401  var/lib/dpkg/status
+f0fba3efa7082c8d50f393fae712513444712d3d611ac1f754dcdcc12dcede01  etc/systemd/system/serial-getty@ttyGS0.service.d/autologin.conf

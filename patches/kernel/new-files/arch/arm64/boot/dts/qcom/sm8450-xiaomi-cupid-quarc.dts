@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * cupid QUARANTINE-C: clock / PMIC / pinctrl group ENABLED, all peripherals
+ * (UART, UFS, USB, PCIe, SDHCI) still disabled.
+ */
+
+/dts-v1/;
+
+#include "sm8450.dtsi"
+#include "pm8350.dtsi"
+#include "pm8350b.dtsi"
+#include "pm8350c.dtsi"
+#include "pm8450.dtsi"
+#include "pmk8350.dtsi"
+#include "pmr735a.dtsi"
+#include "sm8450-xiaomi-cupid-syms.dtsi"
+
+/ {
+	model = "Xiaomi 12 based on Qualcomm Technologies, Inc SM8450";
+	compatible = "qcom,waipio", "xiaomi,cupid", "qcom,sm8450";
+	qcom,msm-id = <0x1c9 0x10000>;
+	qcom,board-id = <0x0 0x0>;
+	chassis-type = "handset";
+
+	memory {
+		device_type = "memory";
+		reg = <0x0 0x80000000 0x0 0x6a000000>,
+		      <0x0 0xf4600000 0x0 0x0ba00000>,
+		      <0x8 0x00000000 0x0 0x37500000>,
+		      <0x8 0x37b00000 0x0 0x01e00000>,
+		      <0x8 0x40000000 0x0 0xc0000000>,
+		      <0x9 0x00000000 0x1 0x80000000>;
+	};
+
+	ddr-regions {
+	};
+
+	aliases {
+		serial7 = &uart7;
+	};
+
+	chosen {
+		stdout-path = "serial7:115200n8";
+	};
+};
+
+/ { /delete-node/ memory@a0000000; };
+
+/* 时钟 / PMIC / pinctrl 组打开 */
+&gcc		{ status = "okay"; };
+&rpmhcc		{ status = "okay"; };
+&dispcc		{ status = "okay"; };
+&apps_rsc	{ status = "okay"; };
+&spmi_bus	{ status = "okay"; };
+&tlmm		{ status = "okay"; };
+
+/* 外设全部关闭 */
+&uart7		{ status = "disabled"; };
+&ufs_mem_hc	{ status = "disabled"; };
+&usb_1		{ status = "disabled"; };
+&usb_1_hsphy	{ status = "disabled"; };
+&usb_1_qmpphy	{ status = "disabled"; };
+&pcie0		{ status = "disabled"; };
+&pcie1		{ status = "disabled"; };
+&sdhc_2		{ status = "disabled"; };

@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically save the system clock to the PMK8350 RTC
+
+[Timer]
+OnBootSec=90s
+OnUnitActiveSec=1h
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

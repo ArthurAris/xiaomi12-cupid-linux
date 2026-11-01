@@ -1,0 +1,6 @@
+base_commit=ed120558cd2c5f970edc44e1273a8d7b6caed825
+base_subject=ASoC: qcom: q6apm-voice: drop and free PCM on backend close
+base_date=2026-10-22 01:47:48 +0800
+head_commit=5a1ff1c2d6f69dd7c92497f1655645dd383657d3
+head_subject=arm64: dts: qcom: add initial Xiaomi 12 (cupid) board support
+head_date=2026-10-28 00:14:10 +0800

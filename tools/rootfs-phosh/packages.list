@@ -1,0 +1,24 @@
+# Explicit packages only; apt always runs with --no-install-recommends.
+phosh
+phoc
+squeekboard
+dbus-user-session
+libpam-systemd
+seatd
+foot
+fonts-dejavu-core
+libgl1-mesa-dri
+libegl-mesa0
+libdrm-tests
+kbd
+# Required by the distribution's Phosh session launcher, not the GNOME desktop.
+gnome-session-bin
+gnome-session-common
+# The installed phosh.session requires the SettingsDaemon components (GNOME 50).
+# Its audio dependencies are mandatory package dependencies, not a full desktop.
+gnome-settings-daemon
+# gsettings/schema compiler for validated offline bring-up defaults.
+libglib2.0-bin
+# Small, non-GTK capture/input diagnostics requested for later serial bring-up.
+grim
+libinput-tools

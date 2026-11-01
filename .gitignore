@@ -1,0 +1,23 @@
+# 本机唯一数据、备份、构建产物、第三方克隆、ROM 解包：不进仓库
+/private/
+/out/
+/repos/
+/sources/
+/kernel/
+/X-MiPort/
+/X-MiPort*.zip
+/X-MiPort-Flash.bat
+/acl-recovery/
+/android-mainline-port/
+/hs_rate
+
+# 构建产物与照片
+*.img
+*.bin
+*.elf
+*.log
+*.jpg
+*.jpeg
+*.png
+*.zst
+/repos_summary.csv
